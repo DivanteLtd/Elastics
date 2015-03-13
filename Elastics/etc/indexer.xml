@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../Magento/Indexer/etc/indexer.xsd">
+    <indexer id="elastics_products" view_id="elastics_products" class="Divante\Elastics\Model\Indexer\Product">
+        <title translate="true">Elasticsearch Product indexer</title>
+        <description translate="true">Index products data into Elasticsearch</description>
+    </indexer>
+</config>

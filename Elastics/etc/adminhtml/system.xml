@@ -5,7 +5,7 @@
         <tab id="divante" translate="label" sortOrder="10">
             <label>Divante</label>
         </tab>
-        <section id="divante" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="elastics" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Elastics</label>
             <tab>divante</tab>
             <resource>Divante_Elastics::elastics</resource>
@@ -14,6 +14,9 @@
                 <field id="elasticsearch_server_uri" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Elasticsearch server URI</label>
                     <comment>Elastic search server URI, example: "http://localhost:9200"</comment>
+                </field>
+                <field id="elasticsearch_index_name" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Index name</label>
                 </field>
             </group>
         </section>

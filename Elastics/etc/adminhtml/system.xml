@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="divante" translate="label" sortOrder="10">
+            <label>Divante</label>
+        </tab>
+        <section id="divante" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Elastics</label>
+            <tab>divante</tab>
+            <resource>Divante_Elastics::elastics</resource>
+            <group id="configuration" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Elasticsearch configuration</label>
+                <field id="elasticsearch_server_uri" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Elasticsearch server URI</label>
+                    <comment>Elastic search server URI, example: "http://localhost:9200"</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -28,9 +28,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                 $essUri
             )
         );
-
         $client = new Client($params);
-
         return $client;
     }
 
@@ -44,7 +42,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             self::ELASTICSEARCH_INDEX_NAME_CONFIG_PATH,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
         );
-
         return $indexName;
     }
 }

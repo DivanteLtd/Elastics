@@ -25,7 +25,9 @@ class Elasticsearch
     }
 
     /**
-     * @param array $data
+     * @param $data
+     *
+     * @return array
      */
     public function bulk($data){
         $client = $this->helper->getElasticSearchConnection();
@@ -40,5 +42,7 @@ class Elasticsearch
         $params['body'][] = $data;
 
         $response = $client->bulk($params);
+
+        return $response;
     }
 }

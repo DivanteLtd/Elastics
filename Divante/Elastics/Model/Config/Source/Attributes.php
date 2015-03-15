@@ -20,21 +20,21 @@ class Attributes implements \Magento\Framework\Option\ArrayInterface
     /**
      * @var \Magento\Framework\Api\FilterBuilder
      */
-    private $filterBulider;
+    private $filterBuilder;
 
     /**
-     * @param \Magento\Eav\Model\AttributeRepository           $pageRepository
+     * @param \Magento\Eav\Model\AttributeRepository           $attributeRepository
      * @param \Magento\Framework\Api\SearchCriteriaDataBuilder $searchCriteriaBuilder
      * @param \Magento\Framework\Api\FilterBuilder             $filterBuilder
      */
     public function __construct(
-        \Magento\Eav\Model\AttributeRepository $pageRepository,
+        \Magento\Eav\Model\AttributeRepository $attributeRepository,
         \Magento\Framework\Api\SearchCriteriaDataBuilder $searchCriteriaBuilder,
         \Magento\Framework\Api\FilterBuilder $filterBuilder
     ) {
-        $this->attributeRepository = $pageRepository;
+        $this->attributeRepository = $attributeRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->filterBulider = $filterBuilder;
+        $this->filterBuilder = $filterBuilder;
     }
 
     /**
@@ -47,7 +47,7 @@ class Attributes implements \Magento\Framework\Option\ArrayInterface
         $optionArray = array();
 
         $this->searchCriteriaBuilder->addFilter(
-            [$this->filterBulider->setField('is_searchable')->setValue(1)->create()]
+            [$this->filterBuilder->setField('is_searchable')->setValue(1)->create()]
         );
 
         $attributes = $this->attributeRepository->getList(Product::ENTITY, $this->searchCriteriaBuilder->create());

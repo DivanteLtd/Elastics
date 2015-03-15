@@ -9,13 +9,29 @@ class Product implements \Magento\Indexer\Model\ActionInterface, \Magento\Framew
 {
 
     /**
-     * Execute full indexation
+     * @var Product\Action\Row
+     */
+    protected $_productFlatIndexerRow;
+
+    /**
+     * @param Product\Action\Row $productFlatIndexerRow
+     */
+    public function __construct(
+        Product\Action\Row $productFlatIndexerRow
+    ) {
+        $this->_productFlatIndexerRow = $productFlatIndexerRow;
+    }
+
+    /**
+     * Execute full indexatio
      *
      * @return void
      */
     public function executeFull()
     {
-        // TODO: Implement executeFull() method.
+        $this->_productFlatIndexerRow->execute(1);
+
+
     }
 
     /**
@@ -27,7 +43,6 @@ class Product implements \Magento\Indexer\Model\ActionInterface, \Magento\Framew
      */
     public function executeList(array $ids)
     {
-        // TODO: Implement executeList() method.
     }
 
     /**
@@ -39,7 +54,7 @@ class Product implements \Magento\Indexer\Model\ActionInterface, \Magento\Framew
      */
     public function executeRow($id)
     {
-        // TODO: Implement executeRow() method.
+        $this->_productFlatIndexerRow->execute($id);
     }
 
     /**
@@ -51,5 +66,6 @@ class Product implements \Magento\Indexer\Model\ActionInterface, \Magento\Framew
      */
     public function execute($ids)
     {
-        // TODO: Implement execute() method.
-}}
+        $this->_productFlatIndexerRow->execute($ids);
+    }
+}

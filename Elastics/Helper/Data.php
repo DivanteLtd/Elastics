@@ -11,6 +11,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const ELASTICSEARCH_URI_CONFIG_PATH = "elastics/configuration/elasticsearch_server_uri";
     const ELASTICSEARCH_INDEX_NAME_CONFIG_PATH = "elastics/configuration/elasticsearch_index_name";
+    const ELASTICSEARCH_INDEX_ATTRIBUTES_CONFIG_PATH = "elastics/configuration/elasticsearch_index_attributes";
 
     /**
      * @param null $store
@@ -43,5 +44,22 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
         );
         return $indexName;
+    }
+
+    /**
+     * @param null $store
+     *
+     * @return array
+     */
+    public function getElasticSearchAttributesArray($store = null)
+    {
+        $attributes = $this->scopeConfig->getValue(
+            self::ELASTICSEARCH_INDEX_ATTRIBUTES_CONFIG_PATH,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
+        );
+
+        $attributesArray = explode(",", $attributes);
+
+        return $attributesArray;
     }
 }

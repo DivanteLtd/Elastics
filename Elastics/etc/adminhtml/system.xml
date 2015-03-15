@@ -18,6 +18,10 @@
                 <field id="elasticsearch_index_name" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Index name</label>
                 </field>
+                <field id="elasticsearch_index_attributes" translate="label" type="multiselect" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Indexed attributes</label>
+                    <source_model>Divante\Elastics\Model\Config\Source\Attributes</source_model>
+                </field>
             </group>
         </section>
     </system>

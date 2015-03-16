@@ -10,18 +10,25 @@ class Elasticsearch
     const TYPE_NAME = "product";
 
     /**
-     * @var \Divante\Elastics\Helper\Data|Data
+     * @var \Divante\Elastics\Helper\Data $helper
      */
     private $helper;
+    /**
+     * @var Attributes
+     */
+    private $attributes;
 
     /**
      * @param \Divante\Elastics\Helper\Data $helper
+     * @param Attributes                    $attributes
      */
     public function __construct(
-        \Divante\Elastics\Helper\Data $helper
+        \Divante\Elastics\Helper\Data $helper,
+        \Divante\Elastics\Model\Indexer\Product\Attributes $attributes
     )
     {
         $this->helper =  $helper;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -44,5 +51,16 @@ class Elasticsearch
         $response = $client->bulk($params);
 
         return $response;
+    }
+
+    /**
+     * @return array
+     */
+    public function createIndex(){
+        $mappings = $this->attributes->getAttributeProperties($this->helper->getElasticSearchAttributesArray());
+        $params['body']['mappings'][self::TYPE_NAME] = $mappings;
+        $params['index'] = $this->helper->getElasticSearchIndexName();
+        $client = $this->helper->getElasticSearchConnection();
+        return $client->indices()->create($params);
     }
 }

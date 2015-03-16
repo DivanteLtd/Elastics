@@ -20,10 +20,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getElasticSearchConnection($store = null)
     {
-        $essUri = $this->scopeConfig->getValue(
-            self::ELASTICSEARCH_URI_CONFIG_PATH,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
-        );
+        $essUri = $this->getElasticsearchServerUri($store);
         $params = array(
             "hosts" => array(
                 $essUri
@@ -31,6 +28,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         );
         $client = new Client($params);
         return $client;
+    }
+
+    /**
+     * @param null $store
+     *
+     * @return string
+     */
+    public function getElasticsearchServerUri($store = null)
+    {
+        $essUri = $this->scopeConfig->getValue(
+            self::ELASTICSEARCH_URI_CONFIG_PATH,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store
+        );
+        return $essUri;
     }
 
     /**
@@ -61,5 +72,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $attributesArray = explode(",", $attributes);
 
         return $attributesArray;
+    }
+
+    /**
+     * return boolean
+     */
+    public function checkIfIndexExists()
+    {
+        $curl = curl_init($this->getElasticsearchServerUri()."/".$this->getElasticSearchIndexName());
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        $decoded = json_decode($response);
+        if (isset($decoded->status) && $decoded->status == '404') {
+            return false;
+        }
+        return $response;
     }
 }

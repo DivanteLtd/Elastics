@@ -4,4 +4,7 @@
     <event name="controller_action_catalog_product_save_entity_after">
         <observer name="elastics_save_product" instance="Divante\Elastics\Model\Observer" method="afterSaveProduct" />
     </event>
+    <event name="admin_system_config_changed_section_elastics">
+        <observer name="elastics_save_config" instance="Divante\Elastics\Model\Config\Observer" method="afterConfigSectionSave" />
+    </event>
 </config>

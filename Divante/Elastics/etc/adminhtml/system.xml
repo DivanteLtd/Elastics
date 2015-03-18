@@ -22,6 +22,23 @@
                     <label>Indexed attributes</label>
                     <source_model>Divante\Elastics\Model\Config\Source\Attributes</source_model>
                 </field>
+                <field id="elasticsearch_authentication_type" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Authentication type</label>
+                    <can_be_empty>1</can_be_empty>
+                    <source_model>Divante\Elastics\Model\Config\Source\Auth</source_model>
+                </field>
+                <field id="elasticsearch_basic_user" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic auth user</label>
+                    <depends>
+                        <field id="elasticsearch_authentication_type">basic</field>
+                    </depends>
+                </field>
+                <field id="elasticsearch_basic_pass" translate="label" type="password" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic auth password</label>
+                    <depends>
+                        <field id="elasticsearch_authentication_type">basic</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

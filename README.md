@@ -16,3 +16,8 @@ TODO
 * add possibility to use authenticated Elasticsearch server instances,
 * support for multistore,
 * layered navigation based on Elasticsearch.
+
+Elasticsearch library
+=====================
+
+This extension uses official [Elasticsearch PHP](http://www.elastic.co/guide/en/elasticsearch/client/php-api/current/index.html) library.

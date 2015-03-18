@@ -15,6 +15,7 @@ TODO
 * improve (analyzers etc.) type mapping for Elasticsearch,
 * add possibility to use authenticated Elasticsearch server instances,
 * support for multistore,
+* create unit tests,
 * layered navigation based on Elasticsearch.
 
 Elasticsearch library

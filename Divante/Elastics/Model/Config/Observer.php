@@ -36,8 +36,7 @@ class Observer
 
     public function afterConfigSectionSave(\Magento\Framework\Event\Observer $observer)
     {
-
-        if(!$this->helper->checkIfIndexExists()){
+        if(!$response = $this->helper->checkIfIndexExists()){
             $this->elasticsearch->createIndex();
             $this->context->getMessageManager()->addSuccess(__("Elasticsearch index created"));
         }

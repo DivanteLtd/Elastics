@@ -57,10 +57,19 @@ class Elasticsearch
      * @return array
      */
     public function createIndex(){
-        $mappings = $this->attributes->getAttributeProperties($this->helper->getElasticSearchAttributesArray());
+        $mappings = $this->getMappings();
         $params['body']['mappings'][self::TYPE_NAME] = $mappings;
         $params['index'] = $this->helper->getElasticSearchIndexName();
         $client = $this->helper->getElasticSearchConnection();
         return $client->indices()->create($params);
+    }
+
+    /**
+     * @return array
+     */
+    private function getMappings()
+    {
+        $mappings = $this->attributes->getAttributeProperties($this->helper->getElasticSearchAttributesArray());
+        return $mappings;
     }
 }

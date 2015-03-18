@@ -11,9 +11,8 @@ Magento 2 Version
 TODO
 ====
 * searching :D,
-* create Elasticsearch index after save index name setting in configuration, 
 * make indexer work and remove Observer,
-* make type mapping for Elasticsearch,
+* improve (analyzers etc.) type mapping for Elasticsearch,
 * add possibility to use authenticated Elasticsearch server instances,
 * support for multistore,
 * layered navigation based on Elasticsearch.
